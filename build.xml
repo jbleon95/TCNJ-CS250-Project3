@@ -1,0 +1,31 @@
+<!-- Lab 10 -->
+<!-- Jeremy Leon -->
+<!-- Julie Swift -->
+<project name="Project 3" default="compile">
+  
+  <target name="compile" depends="clean">
+    <javac includeantruntime="false" srcdir="."/>
+  </target>
+
+  <target name="clean">
+    <delete>
+      <fileset dir="." includes="**/*.class, *.*~, *.txt"/>
+    </delete>
+    <delete dir="META-INF" failonerror="false"/>
+  </target>
+
+  <target name="jar">
+      <jar destfile="./Project3.jar">
+          <fileset dir= "." includes= "**/*.java, *.xml"/>
+      </jar>
+  </target>
+  
+  <target name="authors">
+    <echo message="Authors:${line.separator} *Julie Swift${line.separator} *Jeremy Leon"/>
+  </target>
+
+  <target name="run" depends="compile, authors">
+    <java classpath="./" classname="Driver"/>
+  </target>
+
+</project>
